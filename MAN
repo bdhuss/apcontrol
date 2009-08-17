@@ -1,0 +1,85 @@
+NAME:
+	apcontrol - Organizes and manages a list of access points
+
+SYNOPSIS:
+	apcontrol [FUNCTION] [OPTIONS]
+
+DESCRIPTION:
+	This manual page documents BinaryBurnout's Access Point Control application. By default, it displays 
+	the MASTER.lst file (which is by default the file that holds the access point information).
+
+FUNCTIONS:
+
+	add		- Adds new access point with the specified variables. Requires an ESSID and BSSID as
+			  minimum. For a full input it requires all input in order: ESSID, BSSID, CHANNEL,
+			  ENCRYPTION, CIPHER, KEY. If ENCRYPTION is OPEN, the input string should end there.
+
+	display		- Displays MASTER.lst file. If [OPTIONS] are input, it will display what matches the 
+                          [OPTIONS].
+
+	man		- Displays the manual
+
+	rm		- Removes access point specified [OPTIONS].
+
+OPTIONS:
+
+	-e, --essid
+		Extended Service Set Identifier
+
+	-b, --bssid
+		Basic Service Set Identifier
+		
+	-ch, --channel
+		Channel the access point broadcasts on. The channels can range from 1 to 14. Channels 1 
+		through 11 are used in the US (channels 12 and 13 can be used in the US for IEEE 802.11b 
+		only). Channels 1 through 13 are used in Japan (channel 14 is only used for IEEE 802.11b 
+		and is only valid for DSSS and CCK modes). Channels 1 through 13 are used in the rest of 
+		the world.
+		
+	-enc, --encryption
+		Encryption method used could be one of the following...
+
+		OPEN: Open (no encryption used)
+		WEP:  Wired Equivalent Privacy
+		WPA:  Wi-Fi Protected Access
+		WPA2: Wi-Fi Protected Access Version 2
+
+	-cipher
+		Algorithm used for encryption and decryption. Could be one of the following...
+
+		CCMP: Counter Mode with Cipher Block Chaining Message Authentication Code Protocol
+		TKIP: Temporal Key Integrirt Protocol
+		      * Both of the above use Pre-Shared Keys (PSK) *
+
+	-key
+		The encryption key used on access point.
+
+EXAMPLES:
+
+	apcontrol display -ch <channel>
+		:: Displays all access points that broadcast on channel <channel>.
+	
+	apcontrol rm -e <essid>
+		:: Removes access point with ESSID <essid>.
+
+* ADD EXAMPLES: *
+
+	apcontrol add -e <essid> -b <bssid>
+		:: Minimum variables needed for add function. Adds new access point with ESSID <essid>
+		   and BSSID <bssid>.
+
+	apcontrol add -e <essid> -b <bssid> -ch <channel> -enc <encryption> -cipher <cipher> -key <key>
+		:: Full add function.
+
+	apcontrol add -e <essid> -b <bssid> -ch <channel> -enc open
+		:: Open access point. This will add a new access point with specified variables and auto
+		   add the CIPHER, AUTH and KEY variables as "---".
+
+	apcontrol add -e <essid> -b <bssid> -ch <channel> -enc wep
+		:: Adds access point with specified variables and ENCRYPTION WEP. Auto adds CIPHER as WEP,
+		   AUTH as "---" and KEY as "???".
+
+	apcontrol add -e <essid> -b <bssid> -ch <channel> -enc <wpa/wpa2> -cipher <ccmp/tkip>
+		:: Adds access point with specified varables and ENCRYPTION WPA or WPA2 and CIPHER CCMP or
+		   TKIP. Auto adds AUTH as PSK and KEY as "???".
+
