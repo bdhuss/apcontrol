@@ -118,6 +118,44 @@ EXAMPLES:
 </code>
 </pre>
 
+h2. Sample Output
+
+* @java apcontrol display@
+
+<pre>
+<code>
+#================================================================================
+#ESSID:         BSSID:                  CH: ENC: CIPHER: AUTH:  KEY:
+#--------------------------------------------------------------------------------
+1P2N7           00:18:01:FE:A1:50       1   WEP  WEP     ---    ???
+82K85           00:1F:90:A1:E8:C5       6   WEP  WEP     ---    ???
+btwmain         00:1F:90:E5:99:2E       6   WPA2 CCMP    PSK    ???
+I9J01           00:1F:90:E6:FC:FE       11  WEP  WEP     ---    ???
+K7FQR           00:1F:90:C7:DD:20       1   WEP  WEP     ---    ???
+linksys         00:18:F8:18:E8:C5       6   OPN  ---     ---    ???
+P0QQ1-9929      00:18:01:EB:7A:23       11  WEP  WEP     ---    ???
+R06D0           00:18:01:09:86:ED       11  WEP  WEP     ---    ???
+wireless        00:0C:41:D2:F9:E7       6   OPN  ---     ---    ???
+Zelda           00:22:3F:23:B9:9E       11  WPA  TKIP    PSK    ???
+</code>
+</pre>
+
+* @java apcontrol display -enc WEP@
+
+<pre>
+<code>
+#================================================================================
+#ESSID:         BSSID:                  CH: ENC: CIPHER: AUTH:  KEY:
+#--------------------------------------------------------------------------------
+1P2N7           00:18:01:FE:A1:50       1   WEP  WEP     ---    ???
+82K85           00:1F:90:A1:E8:C5       6   WEP  WEP     ---    ???
+I9J01           00:1F:90:E6:FC:FE       11  WEP  WEP     ---    ???
+K7FQR           00:1F:90:C7:DD:20       1   WEP  WEP     ---    ???
+P0QQ1-9929      00:18:01:EB:7A:23       11  WEP  WEP     ---    ???
+R06D0           00:18:01:09:86:ED       11  WEP  WEP     ---    ???
+</code>
+</pre>
+
 h2. Copyright
 
 Copyright (c) 2009 Bryan Huss. See LICENSE for details.

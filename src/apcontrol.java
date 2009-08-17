@@ -56,8 +56,8 @@ public class apcontrol {
 						index=index+2;
 					}
 					else if (args[index].toLowerCase().equals("-enc") || args[index].toLowerCase().equals("--encryption")) {
-						if (args[index+1].toUpperCase().equals("OPEN")) {
-							enc = new String("OPEN");
+						if (args[index+1].toUpperCase().equals("OPEN") || args[index+1].toUpperCase().equals("OPN")) {
+							enc = new String("OPN");
 							cipher = new String("---");
 							auth = new String("---");
 							key = new String("---");
@@ -83,9 +83,15 @@ public class apcontrol {
 						}
 					}
 					else if (args[index].toLowerCase().equals("-cipher")) {
-						if (args[index+1].toUpperCase().equals("PSK")) {
-							cipher = new String(args[index+1].toUpperCase()); 
-							index+=2;
+						if (args[index+1].toUpperCase().equals("CCMP")) {
+							cipher = new String(args[index+1].toUpperCase());
+							auth = new String("PSK");
+							index=index+2;
+						}
+						else if (args[index+1].toUpperCase().equals("TKIP")) {
+							cipher = new String(args[index+1].toUpperCase());
+							auth = new String("PSK");
+							index=index+2;
 						}
 						else { 
 							System.out.println(args[index+1]+" is not a valid cipher."+HELP);
@@ -94,7 +100,7 @@ public class apcontrol {
 					}
 					else if (args[index].toLowerCase().equals("-key")) {
 						key = new String(args[index+1]);
-						index+=2;
+						index=index+2;
 					}
 					else {
 						System.out.println("Malformed \'add\' function."+HELP);
