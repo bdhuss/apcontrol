@@ -156,6 +156,12 @@ R06D0           00:18:01:09:86:ED       11  WEP  WEP     ---    ???
 </code>
 </pre>
 
+h2. TODO
+
+* <b>ADD:</b> Support for CCMP & TKIP cipher on one network.
+* <b>ADD:</b> Function to verify validity of BSSID hex key mac address's.
+* <b>ADD:</b> Sort capabilities for something other than ESSID's.
+
 h2. Copyright
 
 Copyright (c) 2009 Bryan Huss. See LICENSE for details.
